@@ -1,1 +1,6 @@
-
+team_away,team_home,starter_away,starter_home,predicted_score_away,predicted_score_home,model_moneyline_away,model_moneyline_home,sportsbook_moneyline_away,sportsbook_moneyline_home,model_total,sportsbook_total
+Yankees,Red Sox,Gerrit Cole,Brayan Bello,4,5,115,-125,120,-130,9.2,8.5
+Dodgers,Giants,Walker Buehler,Logan Webb,5,4,100,-110,105,-115,8.5,8.5
+Cubs,Cardinals,Justin Steele,Miles Mikolas,3,6,130,-150,135,-155,9.6,9.0
+Astros,Rangers,Framber Valdez,Jon Gray,6,3,-110,100,-105,-115,8.0,8.5
+Braves,Mets,Max Fried,Kodai Senga,2,3,140,-160,145,-165,7.3,8.0
