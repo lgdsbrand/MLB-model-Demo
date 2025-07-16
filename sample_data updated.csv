@@ -1,0 +1,6 @@
+team_away,team_home,starter_away,starter_home,record_home,record_away,record_home_split,record_away_split,last_10_home,last_10_away,team_home_abbr,team_away_abbr,game_time,score_home,score_away,sportsbook_total,model_total,over_under_pick,moneyline_home,moneyline_away,win_prob_home,win_prob_away,nrfi_confidence,weather,dome
+Yankees,Red Sox,Gerrit Cole,Brayan Bello,48-42,51-39,28-18,23-21,6-4,5-5,bos,nyy,1:05 PM,5,3,8.5,9.7,BET THE OVER,-120,+100,52%,48%,7,Sunny,
+Dodgers,Giants,Walker Buehler,Logan Webb,50-40,49-41,27-20,22-21,5-5,6-4,sf,la,3:10 PM,3,4,9.0,7.1,BET THE UNDER,-110,-110,49%,51%,9,Cloudy,
+Cubs,Cardinals,Justin Steele,Miles Mikolas,45-45,44-46,22-23,22-23,7-3,4-6,stl,chc,2:15 PM,6,2,8.0,8.4,NO BET,+105,-125,47%,53%,5,Rainy,
+Astros,Rangers,Framber Valdez,Jon Gray,47-43,50-40,25-21,25-19,4-6,7-3,tex,hou,7:20 PM,4,5,8.5,6.3,BET THE UNDER,-130,+110,54%,46%,8,Clear,🏟️
+Braves,Mets,Max Fried,Kodai Senga,52-38,48-42,30-15,18-27,6-4,5-5,nym,atl,6:40 PM,7,1,9.5,10.2,BET THE OVER,-115,-105,48%,52%,6,Partly Cloudy,
