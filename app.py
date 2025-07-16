@@ -32,14 +32,14 @@ for idx, row in df.iterrows():
             st.image(f"https://a.espncdn.com/i/teamlogos/mlb/500/{row['team_away_abbr']}.png", width=80)
             st.markdown(f"**{row['team_away']}**")
             st.markdown(f"Starter: {row['starter_away']}")
-            st.markdown(f"Record: {row['record_away']} (Away: {row['record_away_split']})")
+            st.markdown(f"Record: {row['record_away']}")
             st.markdown(f"Last 10: {row['last_10_away']}")
 
         with col2:
             st.image(f"https://a.espncdn.com/i/teamlogos/mlb/500/{row['team_home_abbr']}.png", width=80)
             st.markdown(f"**{row['team_home']}**")
             st.markdown(f"Starter: {row['starter_home']}")
-            st.markdown(f"Record: {row['record_home']} (Home: {row['record_home_split']})")
+            st.markdown(f"Record: {row['record_home']")
             st.markdown(f"Last 10: {row['last_10_home']}")
 
         col3, col4 = st.columns(2)
