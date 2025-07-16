@@ -1,6 +1,6 @@
-team_away,team_home,starter_away,starter_home,predicted_score_away,predicted_score_home,model_moneyline_away,model_moneyline_home,sportsbook_moneyline_away,sportsbook_moneyline_home,model_total,sportsbook_total,game_time
-Yankees,Red Sox,Gerrit Cole,Brayan Bello,4,5,115,-125,120,-130,9.2,8.5,1:00
-Dodgers,Giants,Walker Buehler,Logan Webb,5,4,100,-110,105,-115,8.5,8.5,2:00
-Cubs,Cardinals,Justin Steele,Miles Mikolas,3,6,130,-150,135,-155,9.6,9.0,3:00
-Astros,Rangers,Framber Valdez,Jon Gray,6,3,-110,100,-105,-115,8.0,8.5,4:00
-Braves,Mets,Max Fried,Kodai Senga,2,3,140,-160,145,-165,7.3,8.0,5:00
+team_away,team_home,team_away_abbr,team_home_abbr,starter_away,starter_home,predicted_score_away,predicted_score_home,model_moneyline_away,model_moneyline_home,sportsbook_moneyline_away,sportsbook_moneyline_home,model_total,sportsbook_total,game_time
+Yankees,Red Sox,NYY,BOS,Gerrit Cole,Brayan Bello,4,5,115,-125,120,-130,9.2,8.5,1:00
+Dodgers,Giants,LAD,SF,Walker Buehler,Logan Webb,5,4,100,-110,105,-115,8.5,8.5,2:00
+Cubs,Cardinals,CHC,STL,Justin Steele,Miles Mikolas,3,6,130,-150,135,-155,9.6,9.0,3:00
+Astros,Rangers,HOU,TEX,Framber Valdez,Jon Gray,6,3,-110,100,-105,-115,8.0,8.5,4:00
+Braves,Mets,ATL,NYM,Max Fried,Kodai Senga,2,3,140,-160,145,-165,7.3,8.0,5:00
