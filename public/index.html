@@ -3,90 +3,126 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>LineupWire</title>
+  <title>LineupWire – Smarter Sports Betting</title>
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: #f5f7fa;
-      color: #333;
+      font-family: "Segoe UI", sans-serif;
+      background-color: #f9f9f9;
+      color: #222;
     }
+
     header {
-      background: #1e1e2f;
-      color: white;
-      padding: 1.2em;
       text-align: center;
+      padding: 2rem 1rem 0.5rem;
     }
-    header img {
-      height: 50px;
-      vertical-align: middle;
+
+    .logo {
+      max-width: 200px;
+      margin-bottom: 0.5rem;
     }
+
     h1 {
-      margin: 0.3em 0 0.1em;
+      font-size: 2rem;
+      margin: 0.2rem 0;
     }
-    .tagline {
-      font-size: 1.1em;
-      color: #ddd;
+
+    p.tagline {
+      font-size: 1.1rem;
+      color: #555;
     }
-    .main {
-      padding: 2em;
-      text-align: center;
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin: 1.5rem 0;
     }
-    .laptop-img {
-      max-width: 100%;
-      border-radius: 10px;
-      box-shadow: 0 0 12px rgba(0,0,0,0.1);
-      margin-bottom: 2em;
-    }
-    .launch-button {
-      background-color: #4caf50;
-      border: none;
-      padding: 0.8em 2em;
-      font-size: 1.2em;
-      border-radius: 5px;
-      color: white;
-      cursor: pointer;
+
+    nav a {
+      padding: 10px 16px;
+      background: #efefef;
+      border-radius: 6px;
       text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      transition: background 0.2s;
     }
-    .launch-button:hover {
-      background-color: #45a049;
+
+    nav a:hover {
+      background: #ddd;
     }
-    .tabs {
-      margin-top: 2em;
+
+    .hero {
       display: flex;
       justify-content: center;
-      flex-wrap: wrap;
-      gap: 1em;
+      align-items: center;
+      padding: 2rem;
     }
-    .tab {
-      background: #ffffff;
-      padding: 0.7em 1.4em;
-      border-radius: 8px;
-      box-shadow: 0 0 8px rgba(0,0,0,0.1);
-      font-weight: bold;
+
+    .hero img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.1);
+    }
+
+    .launch-button {
+      display: block;
+      text-align: center;
+      margin: 2rem auto;
+      font-size: 1rem;
+      background: #222;
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 6px;
+      text-decoration: none;
+      width: fit-content;
+    }
+
+    .launch-button:hover {
+      background: #444;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      .hero {
+        padding: 1rem;
+      }
+
+      nav a {
+        font-size: 0.95rem;
+      }
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>📊 LineupWire</h1>
-    <div class="tagline">Smarter Sports Betting</div>
+    <img class="logo" src="logo_placeholder.png" alt="LineupWire Logo" />
+    <h1>LineupWire</h1>
+    <p class="tagline">Smarter Sports Betting Starts Here</p>
   </header>
-  <div class="main">
-    <img class="laptop-img" src="https://i.imgur.com/ATN6MpJ.png" alt="LineupWire Demo" />
-    <a class="launch-button" href="https://lineupwire-mlb1.vercel.app">Launch MLB Model</a>
-    
-    <div class="tabs">
-      <div class="tab">MLB</div>
-      <div class="tab">NFL</div>
-      <div class="tab">NBA</div>
-      <div class="tab">NCAAF</div>
-      <div class="tab">NCAAB</div>
-      <div class="tab">WNBA</div>
-      <div class="tab">PGA</div>
-      <div class="tab">TENNIS</div>
-      <div class="tab">TOOLS</div>
-    </div>
+
+  <nav>
+    <a href="#">MLB</a>
+    <a href="#">NFL</a>
+    <a href="#">NBA</a>
+    <a href="#">NCAAF</a>
+    <a href="#">NCAAB</a>
+    <a href="#">WNBA</a>
+    <a href="#">PGA</a>
+    <a href="#">TENNIS</a>
+    <a href="#">TOOLS</a>
+  </nav>
+
+  <div class="hero">
+    <img src="hero_laptop_graphic.png" alt="Laptop with LineupWire model screenshot" />
   </div>
+
+  <a class="launch-button" href="https://3m2p7gagvatzgld.streamlit.app">Launch MLB Model</a>
 </body>
 </html>
