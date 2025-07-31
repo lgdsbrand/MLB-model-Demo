@@ -6,100 +6,130 @@
   <title>LineupWire</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
-      background: #f9f9f9;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
     }
 
-    .navbar {
-      background-color: #002244;
-      overflow: hidden;
-      display: flex;
-      justify-content: center;
-      border-bottom: 2px solid #ccc;
-    }
-
-    .navbar a {
-      float: left;
-      font-size: 16px;
+    header {
+      background-color: #133A5E;
       color: white;
+      padding: 20px 10px;
       text-align: center;
-      padding: 16px 20px;
-      text-decoration: none;
     }
 
-    .dropdown {
-      position: relative;
-      display: inline-block;
+    header h1 {
+      margin: 0;
+      font-size: 2em;
     }
 
-    .dropdown-content {
-      display: none;
+    header p {
+      margin: 5px 0 0;
+      font-size: 1em;
+    }
+
+    .menu-button {
       position: absolute;
-      background-color: #f1f1f1;
-      min-width: 160px;
-      z-index: 1;
-      top: 48px;
-    }
-
-    .dropdown-content a {
-      color: #002244;
-      padding: 12px 16px;
-      text-decoration: none;
-      display: block;
-      font-size: 14px;
-      background-color: #f1f1f1;
-      border-bottom: 1px solid #ddd;
-    }
-
-    .dropdown-content a:hover {
-      background-color: #ddd;
-    }
-
-    .dropdown:hover .dropdown-content {
-      display: block;
-    }
-
-    .navbar a:hover, .dropdown:hover .dropbtn {
-      background-color: #001f3f;
-    }
-
-    .dropbtn {
+      top: 25px;
+      left: 20px;
+      font-size: 28px;
       color: white;
-      padding: 16px 20px;
-      font-size: 16px;
-      border: none;
-      background: none;
       cursor: pointer;
+      z-index: 1001;
     }
 
-    .main-content {
-      text-align: center;
-      padding: 60px 20px;
+    nav {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 1000;
+      top: 0;
+      left: 0;
+      background-color: #1f3d5a;
+      overflow-x: hidden;
+      transition: 0.4s;
+      padding-top: 60px;
     }
 
-    h1 {
-      font-size: 36px;
-      margin-bottom: 10px;
-      color: #002244;
-    }
-
-    p {
+    nav a {
+      padding: 10px 30px;
+      text-decoration: none;
       font-size: 18px;
-      color: #444;
+      color: white;
+      display: block;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      background-color: #395c82;
+    }
+
+    nav .subtab {
+      padding-left: 50px;
+      font-size: 16px;
+      color: #ccc;
+    }
+
+    .main {
+      margin-top: 60px;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .overlay {
+      position: fixed;
+      height: 100%;
+      width: 100%;
+      top: 0;
+      left: 0;
+      background-color: rgba(0,0,0,0.5);
+      display: none;
+      z-index: 999;
+    }
+
+    @media (min-width: 768px) {
+      .menu-button {
+        display: none;
+      }
+      nav {
+        width: 220px;
+        position: static;
+        height: auto;
+        background-color: #133A5E;
+        float: left;
+        padding-top: 0;
+      }
+      nav a {
+        display: inline-block;
+        padding: 10px 15px;
+      }
+      nav .subtab {
+        display: inline-block;
+        padding-left: 20px;
+        color: #ccc;
+      }
+      .overlay {
+        display: none !important;
+      }
     }
   </style>
 </head>
 <body>
 
-  <div class="navbar">
-    <div class="dropdown">
-      <button class="dropbtn">MLB</button>
-      <div class="dropdown-content">
-        <a href="https://lineupwiremlb-tdndwbu3m2p7gagvatzgld.streamlit.app">Daily Model</a>
-        <a href="https://nrfi-model.streamlit.app">NRFI</a>
-      </div>
-    </div>
+  <div class="menu-button" onclick="openNav()">☰</div>
+
+  <header>
+    <h1>LineupWire</h1>
+    <p>Smarter Sports Betting Starts Here</p>
+  </header>
+
+  <div id="overlay" class="overlay" onclick="closeNav()"></div>
+
+  <nav id="sidebar">
+    <a href="/">Home</a>
+    <a href="#">MLB</a>
+    <a href="https://lineupwiremlb-tdndwbu3m2p7gagvatzgld.streamlit.app" class="subtab">Daily Model</a>
+    <a href="https://nrfi-model-3srqsf37wjgysp5j9nq47k.streamlit.app" class="subtab">NRFI</a>
     <a href="#">NFL</a>
     <a href="#">NBA</a>
     <a href="#">NCAAF</a>
@@ -108,12 +138,22 @@
     <a href="#">PGA</a>
     <a href="#">TENNIS</a>
     <a href="#">TOOLS</a>
+  </nav>
+
+  <div class="main">
+    <p>Welcome to LineupWire. Click a tab above to explore models for each sport.</p>
   </div>
 
-  <div class="main-content">
-    <h1>LineupWire</h1>
-    <p>Smarter Sports Betting Starts Here</p>
-  </div>
+  <script>
+    function openNav() {
+      document.getElementById("sidebar").style.width = "250px";
+      document.getElementById("overlay").style.display = "block";
+    }
 
+    function closeNav() {
+      document.getElementById("sidebar").style.width = "0";
+      document.getElementById("overlay").style.display = "none";
+    }
+  </script>
 </body>
 </html>
