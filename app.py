@@ -1,63 +1,50 @@
 import streamlit as st
 import pandas as pd
 
-# Load data
-df = pd.read_csv("sample_data.csv")
+# Set page config
+st.set_page_config(page_title="LineupWire MLB Model — Daily Predictions", layout="centered")
 
-# Set Streamlit page config
-st.set_page_config(layout="wide", page_title="MLB Betting Model")
+st.title("📊 LineupWire MLB Model — Daily Predictions")
 
-# Style helpers
-def color_pick(pick):
-    if pick == "BET THE OVER":
-        return "background-color: #d1f7c4;"  # green
-    elif pick == "BET THE UNDER":
-        return "background-color: #fcd7d7;"  # red
-    elif pick == "NO BET":
-        return "background-color: #f1f1f1;"  # gray
-    return ""
+# Sample data (replace with your real model data)
+data = [
+    {
+        "Time": "3:07 PM",
+        "Matchup": "Giants @ Blue Jays",
+        "Pitchers": "Webb vs Gausman",
+        "Model Score": "3.6 - 4.2",
+        "ML Winner": "Blue Jays",
+        "ML Win %": "56%",
+        "Book O/U": 8.5,
+        "Model O/U": 7.8,
+        "O/U Bet": "BET THE UNDER"
+    },
+    {
+        "Time": "4:05 PM",
+        "Matchup": "Orioles @ Yankees",
+        "Pitchers": "Bradish vs Rodón",
+        "Model Score": "4.1 - 4.3",
+        "ML Winner": "Yankees",
+        "ML Win %": "51%",
+        "Book O/U": 9,
+        "Model O/U": 8.4,
+        "O/U Bet": "NO BET"
+    },
+    {
+        "Time": "9:10 PM",
+        "Matchup": "Rangers @ Mariners",
+        "Pitchers": "Eovaldi vs Gilbert",
+        "Model Score": "4.2 - 4.6",
+        "ML Winner": "Mariners",
+        "ML Win %": "54%",
+        "Book O/U": 7.5,
+        "Model O/U": 9.3,
+        "O/U Bet": "BET THE OVER"
+    }
+]
 
-# Title
-st.title("MLB Betting Model")
+# Convert to DataFrame
+df = pd.DataFrame(data)
 
-# Game cards
-for idx, row in df.iterrows():
-    with st.container():
-        st.markdown("---")
-        st.markdown(f"### 🕒 {row['game_time']} — {row['team_away']} @ {row['team_home']}")
-
-        col1, col2 = st.columns(2)
-
-        with col1:
-            st.image(f"https://a.espncdn.com/i/teamlogos/mlb/500/{row['team_away_abbr']}.png", width=80)
-            st.markdown(f"**{row['team_away']}**")
-            st.markdown(f"Starter: {row['starter_away']}")
-            st.markdown(f"Record: {row['record_away']}")
-            st.markdown(f"Last 10: {row['record_last_10']}")
-
-        with col2:
-            st.image(f"https://a.espncdn.com/i/teamlogos/mlb/500/{row['team_home_abbr']}.png", width=80)
-            st.markdown(f"**{row['team_home']}**")
-            st.markdown(f"Starter: {row['starter_home']}")
-            st.markdown(f"Record: {row['record_home']}")
-            st.markdown(f"Last 10: {row['record_last_10']}")
-
-        col3, col4 = st.columns(2)
-
-        with col3:
-            st.markdown(f"**Score:** {row['score_away']} - {row['score_home']}")
-            st.markdown(f"**Over/Under:** {row['sportsbook_total']} (Model: {row['model_total']})")
-            st.markdown(f"**Pick:** ")
-            st.markdown(f"<div style='{color_pick(row['over_under_pick'])}padding:6px;border-radius:5px'>{row['over_under_pick']}</div>", unsafe_allow_html=True)
-
-        with col4:
-            st.markdown(f"**Moneyline Odds:** {row['moneyline_away']} / {row['moneyline_home']}")
-            st.markdown(f"**Win Prob:** {row['win_prob_away']} / {row['win_prob_home']}")
-            st.markdown(f"**NRFI Confidence:** {row['nrfi_confidence']}/10")
-            st.markdown(f"**Weather:** {row['weather']} {row['dome']}")
-
-# NRFI tab
-st.markdown("---")
-st.header("⚾ NRFI Confidence Rankings")
-nrfi_sorted = df.sort_values(by="nrfi_confidence", ascending=False)
-st.dataframe(nrfi_sorted[["team_away", "team_home", "starter_away", "starter_home", "nrfi_confidence"]])
+# Show table
+st.dataframe(df, use_container_width=True)
