@@ -1,29 +1,35 @@
 import streamlit as st
-from nrfi_model import show_nrfi_model  # This must match the function in nrfi_model.py
+import pandas as pd
+import nrfi_model
 
 # Set page config
-st.set_page_config(page_title="LineupWire MLB Models", layout="wide")
+st.set_page_config(page_title="LineupWire MLB Model", layout="wide")
 
-# Sidebar navigation
-st.sidebar.title("🔘 LineupWire MLB Models")
-page = st.sidebar.selectbox("Select a model", ["Daily Predictions", "NRFI Model"])
+# Sidebar dropdown to choose model
+model_choice = st.sidebar.selectbox(
+    "Select Model:",
+    ["Daily Predictions", "NRFI Model"]
+)
 
-# Conditional display
-if page == "Daily Predictions":
+# DAILY MODEL
+if model_choice == "Daily Predictions":
     st.title("📊 LineupWire MLB Model — Daily Predictions")
 
-    # --- Paste your real daily model logic here tomorrow ---
-    import pandas as pd
+    sheet_url = "https://docs.google.com/spreadsheets/d/1hUxaRjULzP6C6xkMw4Pw9qhVONtNe5I2/export?format=csv&id=1hUxaRjULzP6C6xkMw4Pw9qhVONtNe5I2&gid=0"
 
-    data = {
-        "Game Time": ["3:07 PM", "4:05 PM", "9:10 PM"],
-        "Win %": ["44% / 56%", "49% / 51%", "46% / 54%"],
-        "Proj Score": ["3.9 - 5.1", "4.1 - 4.2", "4.3 - 4.7"],
-        "Model Conf.": [9.0, 8.3, 9.0]
-    }
+    try:
+        df = pd.read_csv(sheet_url)
 
-    df = pd.DataFrame(data)
-    st.dataframe(df, use_container_width=True)
+        df.columns = [
+            "Game", "Game Time", "Win %", "Proj Score", "Model O/U", "Book O/U",
+            "Bet", "Confidence", "Starting Pitchers", "Weather"
+        ]
 
-elif page == "NRFI Model":
-    show_nrfi_model()
+        st.dataframe(df, use_container_width=True)
+
+    except Exception as e:
+        st.error("Failed to load Daily Model data. Please check the Google Sheet or URL.")
+
+# NRFI MODEL
+elif model_choice == "NRFI Model":
+    nrfi_model.render()
