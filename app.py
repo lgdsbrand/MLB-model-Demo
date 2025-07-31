@@ -1,4 +1,19 @@
 import streamlit as st
+import nrfi_model  # already added above
+
+# Sidebar for model selection
+page = st.sidebar.selectbox("Select a Model", ["Daily Model", "NRFI Model"])
+
+# Conditional routing
+if page == "Daily Model":
+    # 💡 This is your current MLB daily model logic block
+    st.title("LineupWire MLB Model — Daily Predictions")
+    
+    # (Leave all your current Daily Model table code here...)
+
+elif page == "NRFI Model":
+    nrfi_model.run_nrfi_model()  # 🔁 Calls your NRFI table
+import streamlit as st
 import pandas as pd
 import nrfi_model
 
