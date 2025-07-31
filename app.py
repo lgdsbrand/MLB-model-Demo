@@ -13,9 +13,6 @@ if page == "Daily Model":
 
 elif page == "NRFI Model":
     nrfi_model.run_nrfi_model()  # 🔁 Calls your NRFI table
-import streamlit as st
-import pandas as pd
-import nrfi_model
 
 # Optional: Set Streamlit page config
 st.set_page_config(page_title="MLB Daily Model", layout="wide")
