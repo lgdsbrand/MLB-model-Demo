@@ -1,59 +1,48 @@
 import streamlit as st
 import pandas as pd
+import requests
+from datetime import datetime
 
-def run_nrfi_model():
-    # Load NRFI data from Google Sheet
-    sheet_url = "https://docs.google.com/spreadsheets/d/1hUxaRjULzP6C6xkMw4Pw9qhVONtNe5I2/export?format=csv&gid=1931554076"
+def fetch_nrfi_data():
+    # Replace with your real NRFI model logic
+    data = [
+        {
+            "Time (ET)": "1:05 PM",
+            "Matchup": "PHI vs NYY",
+            "Pitchers": "Wheeler vs Rodón",
+            "Model NRFI %": "76%",
+            "Recommended Bet": "NRFI ✅"
+        },
+        {
+            "Time (ET)": "4:10 PM",
+            "Matchup": "PIT vs ARI",
+            "Pitchers": "Jones vs Gallen",
+            "Model NRFI %": "78%",
+            "Recommended Bet": "NRFI ✅"
+        },
+        {
+            "Time (ET)": "7:10 PM",
+            "Matchup": "BOS vs DET",
+            "Pitchers": "Bello vs Skubal",
+            "Model NRFI %": "62%",
+            "Recommended Bet": "YRFI ❌"
+        }
+    ]
+    return pd.DataFrame(data)
 
-    # Set page config and title
-    st.set_page_config(page_title="LineupWire MLB Model – NRFI")
-    st.title("🔒 LineupWire MLB Model – NRFI Projections")
+def render():
+    st.title("🚫 NRFI Model (No Run First Inning)")
 
-    try:
-        df = pd.read_csv(sheet_url)
+    df = fetch_nrfi_data()
 
-        # Rename columns if needed
-        df.columns = ["Time", "Matchup", "NRFI %"]
+    def highlight_bets(val):
+        if "NRFI" in val:
+            return "background-color: lightgreen; color: black"
+        elif "YRFI" in val:
+            return "background-color: lightcoral; color: black"
+        return ""
 
-        # Apply conditional coloring
-        def color_nrfi(val):
-            if isinstance(val, str) and val.endswith('%'):
-                pct = int(val.strip('%'))
-                if pct >= 65:
-                    return 'background-color: lightgreen; color: black'
-                elif pct < 50:
-                    return 'background-color: lightcoral; color: black'
-            return ''
-
-        styled_df = df.style.applymap(color_nrfi, subset=["NRFI %"])
-        st.dataframe(styled_df, use_container_width=True)
-
-    except Exception as e:
-        st.error(f"Failed to load NRFI data: {e}")
-        def render():
-    import streamlit as st
-    import pandas as pd
-
-    st.title("🚫 NRFI Model — No Run First Inning Predictions")
-
-    sheet_url = "https://docs.google.com/spreadsheets/d/1hUxaRjULzP6C6xkMw4Pw9qhVONtNe5I2/export?format=csv&id=1hUxaRjULzP6C6xkMw4Pw9qhVONtNe5I2&gid=771829288"
-
-    try:
-        df = pd.read_csv(sheet_url)
-
-        df.columns = ["Time", "Matchup", "Pitchers", "NRFI %"]
-
-        def color_nrfi(val):
-            if isinstance(val, str) and val.endswith('%'):
-                pct = int(val.strip('%'))
-                if pct >= 65:
-                    return 'background-color: lightgreen; color: black'
-                elif pct < 50:
-                    return 'background-color: lightcoral; color: black'
-            return ''
-
-        styled_df = df.style.applymap(color_nrfi, subset=["NRFI %"])
-        st.dataframe(styled_df, use_container_width=True)
-
-    except Exception as e:
-        st.error("Failed to load NRFI data.")
+    st.dataframe(
+        df.style.applymap(highlight_bets, subset=["Recommended Bet"]),
+        use_container_width=True
+    )
