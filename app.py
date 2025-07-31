@@ -1,47 +1,29 @@
 import streamlit as st
-import nrfi_model  # already added above
+from nrfi_model import show_nrfi_model  # This must match the function in nrfi_model.py
 
-# Sidebar for model selection
-page = st.sidebar.selectbox("Select a Model", ["Daily Model", "NRFI Model"])
+# Set page config
+st.set_page_config(page_title="LineupWire MLB Models", layout="wide")
 
-# Conditional routing
-if page == "Daily Model":
-    # 💡 This is your current MLB daily model logic block
-    st.title("LineupWire MLB Model — Daily Predictions")
-    
-    # (Leave all your current Daily Model table code here...)
+# Sidebar navigation
+st.sidebar.title("🔘 LineupWire MLB Models")
+page = st.sidebar.selectbox("Select a model", ["Daily Predictions", "NRFI Model"])
+
+# Conditional display
+if page == "Daily Predictions":
+    st.title("📊 LineupWire MLB Model — Daily Predictions")
+
+    # --- Paste your real daily model logic here tomorrow ---
+    import pandas as pd
+
+    data = {
+        "Game Time": ["3:07 PM", "4:05 PM", "9:10 PM"],
+        "Win %": ["44% / 56%", "49% / 51%", "46% / 54%"],
+        "Proj Score": ["3.9 - 5.1", "4.1 - 4.2", "4.3 - 4.7"],
+        "Model Conf.": [9.0, 8.3, 9.0]
+    }
+
+    df = pd.DataFrame(data)
+    st.dataframe(df, use_container_width=True)
 
 elif page == "NRFI Model":
-    nrfi_model.run_nrfi_model()  # 🔁 Calls your NRFI table
-
-# Optional: Set Streamlit page config
-st.set_page_config(page_title="MLB Daily Model", layout="wide")
-
-# Title
-st.title("MLB Daily Model – Table View")
-
-# Load data from published Google Sheet CSV
-csv_url = "https://docs.google.com/spreadsheets/d/1hUxaRjULzP6C6xkMw4Pw9qhVONtNe5I2/export?format=csv&gid=0"
-df = pd.read_csv(csv_url)
-
-# Convert time to 12-hour format if needed
-try:
-    df["Time"] = pd.to_datetime(df["Time"]).dt.strftime("%-I:%M %p")
-except:
-    pass  # If already formatted correctly
-
-# Style win % column based on value
-def highlight_win_pct(val):
-    try:
-        pct = int(str(val).replace("%", ""))
-        if pct >= 65:
-            return "background-color: lightgreen; font-weight: bold;"
-    except:
-        pass
-    return ""
-
-# Display styled DataFrame
-st.dataframe(
-    df.style.applymap(highlight_win_pct, subset=["ML Win %"]),
-    use_container_width=True
-)
+    show_nrfi_model()
